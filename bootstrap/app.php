@@ -78,7 +78,7 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+ $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
@@ -93,7 +93,7 @@ $app->singleton(
 |
 */
 
-$app->router->group(['middleware' => [V1Middleware::class], 'prefix' => 'v1'], function($router) {
+$app->router->group(['middleware' => [V1Middleware::class]], function($router) {
     require __DIR__ . '/../app/API/V1/routes.php';
 });
 
