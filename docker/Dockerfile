@@ -16,7 +16,7 @@ RUN unlink /etc/nginx/sites-enabled/default \
     && mkdir -p /usr/share/nginx/logs \
     && touch /usr/share/nginx/logs/error.log
 
-# Required packages ( supervisor and composer )
+# Required packages ( supervisor )
 RUN apt-get install -y wget supervisor dialog git unzip\
     musl-dev libpng-dev libffi-dev vim libicu-dev libxml2-dev libjpeg-dev libfreetype6-dev libpq-dev
 
@@ -37,6 +37,7 @@ ENV COMPOSER_CACHE_DIR /var/cache/nginx/.composer
 
 ### CLEANUP
 RUN rm -rf /var/cache/* && apt-get purge -y musl-dev python-dev libffi-dev && apt-get autoremove -y
+### MOUNT FILES
 ADD conf/nginx/default.conf /etc/nginx/sites-enabled/default
 ADD conf/nginx/nginx.conf /etc/nginx/nginx.conf
 ADD conf/supervisord.conf /etc/supervisord.conf
