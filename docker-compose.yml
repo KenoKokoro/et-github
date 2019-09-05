@@ -16,7 +16,3 @@ services:
       - PUID=${DOCKER_HOST_UID}
       - PGID=${DOCKER_HOST_GID}
       - XDEBUG_ON=${XDEBUG_ON}
-
-volumes:
-  v9db:
-    driver: "local"
