@@ -9,13 +9,19 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Application Test Suite">
-            <directory suffix="Test.php">./tests</directory>
+        <testsuite name="V1 Unit Tests">
+            <directory suffix="Test.php">./app/API/V1/Tests</directory>
+            <exclude>./app/API/V1/routes.php</exclude>
+            <exclude>./app/API/V1/Tests/UnitTestCase</exclude>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <exclude>
+                <directory suffix=".php">./app/API/V1/Tests/</directory>
+                <file>./app/API/V1/Http/api.php</file>
+            </exclude>
         </whitelist>
     </filter>
     <php>

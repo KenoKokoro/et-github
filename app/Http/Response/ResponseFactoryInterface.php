@@ -2,7 +2,14 @@
 
 namespace App\Http\Response;
 
+use Illuminate\Contracts\Container\BindingResolutionException;
+
 interface ResponseFactoryInterface
 {
-    public function json();
+    /**
+     * Return json response
+     * @return JsonResponseInterface
+     * @throws BindingResolutionException
+     */
+    public function json(): JsonResponseInterface;
 }

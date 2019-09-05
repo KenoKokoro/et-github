@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+use ET\API\V1\Http\Middleware\V1Middleware;
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
     dirname(__DIR__)
@@ -91,8 +93,8 @@ $app->singleton(
 |
 */
 
-$app->router->group([], function ($router) {
-    require __DIR__.'/../routes/web.php';
+$app->router->group(['middleware' => [V1Middleware::class], 'prefix' => 'v1'], function($router) {
+    require __DIR__ . '/../app/API/V1/routes.php';
 });
 
 return $app;
