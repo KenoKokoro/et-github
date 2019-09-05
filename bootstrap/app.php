@@ -1,6 +1,6 @@
 <?php
 
-use ET\API\V1\Http\Middleware\V1Middleware;
+use ET\API\V1\Http\Middleware\{ApiKeyRequired};
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -18,14 +18,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 | application as an "IoC" container and router for this framework.
 |
 */
-
 $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
-
-// $app->withFacades();
-
-// $app->withEloquent();
+$app->configure('api-keys');
 
 /*
 |--------------------------------------------------------------------------
@@ -37,12 +33,10 @@ $app = new Laravel\Lumen\Application(
 | your own bindings here if you like or you can make another file.
 |
 */
-
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
-
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
@@ -59,14 +53,6 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
-
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
-
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -77,10 +63,7 @@ $app->singleton(
 | totally optional, so you are not required to uncomment this line.
 |
 */
-
- $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -92,9 +75,11 @@ $app->singleton(
 | can respond to, as well as the controllers that may handle them.
 |
 */
-
-$app->router->group(['middleware' => [V1Middleware::class]], function($router) {
-    require __DIR__ . '/../app/API/V1/routes.php';
-});
+$app->router->group(
+    ['middleware' => [ApiKeyRequired::class], 'prefix' => 'v1'],
+    function($router) {
+        require __DIR__ . '/../app/API/V1/routes.php';
+    }
+);
 
 return $app;
