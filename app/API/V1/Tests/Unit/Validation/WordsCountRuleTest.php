@@ -20,7 +20,7 @@ class WordsCountRuleTest extends UnitTestCase
     public function should_return_the_failed_validation_message(): void
     {
         $fixture = new WordsCountRule;
-        self::assertEquals('Only one keyword is allowed', $fixture->message());
+        self::assertEquals('Only one keyword is allowed.', $fixture->message());
     }
 
     /** @test */

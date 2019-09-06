@@ -25,6 +25,6 @@ class WordsCountRule implements Rule
 
     public function message(): string
     {
-        return "Only one keyword is allowed";
+        return "Only one keyword is allowed.";
     }
 }

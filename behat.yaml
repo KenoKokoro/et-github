@@ -1,0 +1,12 @@
+default:
+    suites:
+        v1:
+            paths: ['%paths.base%/app/API/V1/Tests/Acceptance/Features']
+            contexts: ['\ET\API\V1\Tests\Acceptance\Contexts\ApiContext']
+
+    extensions:
+        Imbo\BehatApiExtension:
+            apiClient:
+                base_uri: "http://localhost:80"
+                timeout: 5.0
+                verify: false

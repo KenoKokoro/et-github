@@ -5,7 +5,7 @@ use ET\API\V1\Http\Middleware\{ApiKeyRequired};
 require_once __DIR__ . '/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
-    dirname(__DIR__)
+    dirname(__DIR__), $envFile ?? null
 ))->bootstrap();
 
 /*
