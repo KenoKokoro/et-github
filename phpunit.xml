@@ -20,7 +20,8 @@
             <directory suffix=".php">./app</directory>
             <exclude>
                 <directory suffix=".php">./app/API/V1/Tests/</directory>
-                <file>./app/API/V1/Http/api.php</file>
+                <directory suffix=".php">./app/API/V1/Http/Controllers/</directory>
+                <file>./app/API/V1/routes.php</file>
             </exclude>
         </whitelist>
     </filter>

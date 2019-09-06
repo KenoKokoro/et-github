@@ -23,6 +23,7 @@ $app = new Laravel\Lumen\Application(
 );
 $app->configure('api-keys');
 $app->configure('github');
+$app->configure('database');
 
 /*
 |--------------------------------------------------------------------------

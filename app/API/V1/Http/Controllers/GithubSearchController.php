@@ -27,6 +27,7 @@ class GithubSearchController extends Controller
      * @param ResponseFactoryInterface $responseFactory
      * @return JsonResponse
      * @throws Exception
+     * @codeCoverageIgnore
      */
     public function keyword(Request $request, ResponseFactoryInterface $responseFactory): JsonResponse
     {
