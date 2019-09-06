@@ -22,6 +22,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 $app->configure('api-keys');
+$app->configure('github');
 
 /*
 |--------------------------------------------------------------------------
