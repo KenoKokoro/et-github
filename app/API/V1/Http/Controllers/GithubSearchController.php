@@ -4,7 +4,7 @@ namespace ET\API\V1\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Response\ResponseFactoryInterface;
-use ET\API\V1\Service\Github\GithubService;
+use ET\API\V1\Services\Github\GithubService;
 use ET\API\V1\Validation\WordsCountRule;
 use Exception;
 use Illuminate\Http\JsonResponse;

@@ -2,14 +2,14 @@
 
 namespace ET\API\V1\DAL\Github;
 
-use ET\API\V1\Service\Github\DTO\KeywordQuery;
-use Illuminate\Support\Collection;
+use App\API\V1\DAL\Github\GithubResponseCollection;
+use ET\API\V1\Services\Github\DTO\KeywordQuery;
 
 interface GithubRepository
 {
     /**
      * @param KeywordQuery $query
-     * @return Collection
+     * @return GithubResponseCollection
      */
-    public function searchCode(KeywordQuery $query): Collection;
+    public function searchCode(KeywordQuery $query): GithubResponseCollection;
 }

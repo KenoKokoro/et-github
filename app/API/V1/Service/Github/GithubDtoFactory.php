@@ -1,9 +1,9 @@
 <?php
 
-namespace ET\API\V1\Service\Github;
+namespace ET\API\V1\Services\Github;
 
-use ET\API\V1\Service\Github\DTO\KeywordQuery;
-use ET\API\V1\Service\Github\DTO\RepositoryQuery;
+use ET\API\V1\Services\Github\DTO\KeywordQuery;
+use ET\API\V1\Services\Github\DTO\RepositoryQuery;
 
 class GithubDtoFactory
 {

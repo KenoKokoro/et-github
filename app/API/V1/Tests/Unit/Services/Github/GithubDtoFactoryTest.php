@@ -2,10 +2,10 @@
 
 namespace ET\API\V1\Tests\Unit\Service\Github;
 
-use ET\API\V1\Service\Github\DTO\AbstractQuery;
-use ET\API\V1\Service\Github\DTO\KeywordQuery;
-use ET\API\V1\Service\Github\DTO\RepositoryQuery;
-use ET\API\V1\Service\Github\GithubDtoFactory;
+use ET\API\V1\Services\Github\DTO\AbstractQuery;
+use ET\API\V1\Services\Github\DTO\KeywordQuery;
+use ET\API\V1\Services\Github\DTO\RepositoryQuery;
+use ET\API\V1\Services\Github\GithubDtoFactory;
 use ET\API\V1\Tests\Unit\UnitTestCase;
 
 class GithubDtoFactoryTest extends UnitTestCase

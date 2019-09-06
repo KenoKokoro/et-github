@@ -1,9 +1,11 @@
 <?php
 
-namespace ET\API\V1\Service\Github;
+namespace ET\API\V1\Services\Github;
 
 use ET\API\V1\DAL\Github\GithubRepository;
-use ET\API\V1\Service\Github\DTO\KeywordQuery;
+use ET\API\V1\Services\Github\DTO\KeywordQuery;
+use ET\API\V1\Services\Github\Response\ViewModels\SearchFileList;
+use Illuminate\Support\Collection;
 
 class GithubService
 {
@@ -23,11 +25,21 @@ class GithubService
         $this->dtoFactory = $dtoFactory;
     }
 
-    public function searchFiles(KeywordQuery $query): array
+    /**
+     * @param KeywordQuery $query
+     * @return SearchFileList
+     */
+    public function searchFiles(KeywordQuery $query): SearchFileList
     {
-        return $this->repository->searchCode($query)->toArray();
+        $response = $this->repository->searchCode($query);
+        $files = Collection::make($response->items())->pluck('path');
+
+        return SearchFileList::make($files->toArray());
     }
 
+    /**
+     * @return GithubDtoFactory
+     */
     public function dtoFactory(): GithubDtoFactory
     {
         return $this->dtoFactory;

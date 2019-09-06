@@ -2,9 +2,9 @@
 
 namespace ET\API\V1\DAL\Github;
 
-use ET\API\V1\Service\Github\DTO\KeywordQuery;
+use App\API\V1\DAL\Github\GithubResponseCollection;
+use ET\API\V1\Services\Github\DTO\KeywordQuery;
 use GrahamCampbell\GitHub\GitHubManager;
-use Illuminate\Support\Collection;
 
 class GithubApi implements GithubRepository
 {
@@ -18,8 +18,14 @@ class GithubApi implements GithubRepository
         $this->github = $github;
     }
 
-    public function searchCode(KeywordQuery $query): Collection
+    public function searchCode(KeywordQuery $query): GithubResponseCollection
     {
-        return Collection::make($this->github->search()->code($query->getQueryString()));
+        $response = $this->github->search()->code($query->getQueryString());
+
+        return new GithubResponseCollection(
+            $response['total_count'],
+            $response['items'],
+            $response['incomplete_results']
+        );
     }
 }

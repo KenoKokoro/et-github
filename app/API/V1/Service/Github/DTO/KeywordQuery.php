@@ -1,6 +1,6 @@
 <?php
 
-namespace ET\API\V1\Service\Github\DTO;
+namespace ET\API\V1\Services\Github\DTO;
 
 class KeywordQuery extends AbstractQuery
 {

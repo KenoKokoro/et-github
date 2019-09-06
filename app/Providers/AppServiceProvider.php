@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use ET\API\V1\Exceptions\Handler;
-use ET\API\V1\Provider\ServiceProvider as V1ServiceProvider;
+use ET\API\V1\Providers\ServiceProvider as V1ServiceProvider;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;

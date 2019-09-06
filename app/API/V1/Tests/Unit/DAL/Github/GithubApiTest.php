@@ -2,13 +2,13 @@
 
 namespace ET\API\V1\Tests\Unit\DAL\Github;
 
+use App\API\V1\DAL\Github\GithubResponseCollection;
 use ET\API\V1\DAL\Github\GithubApi;
 use ET\API\V1\DAL\Github\GithubRepository;
-use ET\API\V1\Service\Github\DTO\KeywordQuery;
+use ET\API\V1\Services\Github\DTO\KeywordQuery;
 use ET\API\V1\Tests\Unit\UnitTestCase;
 use Github\Api\Search;
 use GrahamCampbell\GitHub\GitHubManager;
-use Illuminate\Support\Collection;
 use Mockery as m;
 use Mockery\MockInterface;
 
@@ -51,7 +51,7 @@ class GithubApiTest extends UnitTestCase
             ->shouldReceive('code')
             ->once()
             ->with('word+repo:username/repository')
-            ->andReturn(['item1', 'item2']);
+            ->andReturn(['total_count' => 0, 'items' => [], 'incomplete_results' => false]);
         $this->github
             ->shouldReceive('search')
             ->once()
@@ -59,6 +59,6 @@ class GithubApiTest extends UnitTestCase
 
         $collection = $this->fixture->searchCode($keyword);
 
-        self::assertInstanceOf(Collection::class, $collection);
+        self::assertInstanceOf(GithubResponseCollection::class, $collection);
     }
 }

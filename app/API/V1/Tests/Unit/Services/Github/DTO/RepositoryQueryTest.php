@@ -2,7 +2,7 @@
 
 namespace ET\API\V1\Tests\Unit\Service\Github\DTO;
 
-use ET\API\V1\Service\Github\DTO\RepositoryQuery;
+use ET\API\V1\Services\Github\DTO\RepositoryQuery;
 use ET\API\V1\Tests\Unit\UnitTestCase;
 
 class RepositoryQueryTest extends UnitTestCase

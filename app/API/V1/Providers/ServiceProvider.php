@@ -1,6 +1,6 @@
 <?php
 
-namespace ET\API\V1\Provider;
+namespace ET\API\V1\Providers;
 
 use ET\API\V1\DAL\DalServiceProvider;
 use ET\API\V1\Http\Response\ResponseServiceProvider;
