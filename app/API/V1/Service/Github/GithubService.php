@@ -63,7 +63,7 @@ class GithubService
         }
 
         $files = Collection::make($response->items())->pluck('path');
-//        $this->cache->put($query->getCacheSignature(), json_encode($files), $query->getCacheTtl());
+        $this->cache->put($query->getCacheSignature(), json_encode($files), $query->getCacheTtl());
 
         return SearchFileList::make($files->toArray());
     }

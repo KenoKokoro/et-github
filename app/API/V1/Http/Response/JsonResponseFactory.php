@@ -12,14 +12,29 @@ class JsonResponseFactory implements JsonResponseInterface
     public function build(int $status, array $append = []): JsonResponse
     {
         switch ($status) {
-            case JsonResponse::HTTP_UNPROCESSABLE_ENTITY:
-                return $this->unprocessableEntity($append);
+            case JsonResponse::HTTP_OK:
+                return $this->ok($append);
+                break;
+            case JsonResponse::HTTP_CREATED:
+                return $this->created($append);
                 break;
             case JsonResponse::HTTP_BAD_REQUEST:
                 return $this->badRequest($append);
                 break;
             case JsonResponse::HTTP_UNAUTHORIZED:
                 return $this->unauthorized($append);
+                break;
+            case JsonResponse::HTTP_FORBIDDEN:
+                return $this->forbidden($append);
+                break;
+            case JsonResponse::HTTP_NOT_FOUND:
+                return $this->notFound($append);
+                break;
+            case JsonResponse::HTTP_METHOD_NOT_ALLOWED:
+                return $this->notAllowed($append);
+                break;
+            case JsonResponse::HTTP_UNPROCESSABLE_ENTITY:
+                return $this->unprocessableEntity($append);
                 break;
         }
 
