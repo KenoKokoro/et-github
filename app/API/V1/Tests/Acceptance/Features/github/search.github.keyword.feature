@@ -48,3 +48,19 @@ Feature: Login "POST" on "/v1/search/github/keyword"
             }
         }
         """
+
+    Scenario: Should return from the mocked repository and store to cache
+        Given the "Content-Type" request header is "application/json"
+        And the "Accept" request header is "application/json"
+        And the "Authorization" request header is "Bearer teststringapikey"
+        And the cache key for keyword query "word" owner "user" repository "repo" does not exists
+        When I request "/v1/search/github/keyword?keyword=word&owner=user&repository=repo" using HTTP "get"
+        Then the response code is 200
+        And the response body contains JSON:
+        """
+        {
+            "message": "Ok.",
+            "result": ["file1", "file2"]
+        }
+        """
+        And the cache key for keyword query "word" owner "user" repository "repo" exists

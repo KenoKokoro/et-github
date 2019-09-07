@@ -3,6 +3,7 @@
 namespace ET\API\V1\Tests\Unit\Service\Github;
 
 use App\API\V1\DAL\Github\GithubResponseCollection;
+use App\Exceptions\HttpResponseException;
 use Carbon\Carbon;
 use ET\API\V1\DAL\Github\GithubRepository;
 use ET\API\V1\Services\Github\DTO\KeywordQuery;
@@ -89,7 +90,9 @@ class GithubServiceTest extends UnitTestCase
         self::assertInstanceOf(SearchFileList::class, $actual);
     }
 
-    /** @test */
+    /** @test
+     * @throws HttpResponseException
+     */
     public function should_search_files_from_github_repository_when_there_is_error_when_reading_from_cache(): void
     {
         $query = m::mock(KeywordQuery::class);
@@ -126,7 +129,9 @@ class GithubServiceTest extends UnitTestCase
         self::assertInstanceOf(SearchFileList::class, $actual);
     }
 
-    /** @test */
+    /** @test
+     * @throws HttpResponseException
+     */
     public function should_search_files_from_github_repository_and_return_them_from_cache_when_there_is_hit(): void
     {
         $query = m::mock(KeywordQuery::class);

@@ -15,6 +15,9 @@ class JsonResponseFactory implements JsonResponseInterface
             case JsonResponse::HTTP_UNPROCESSABLE_ENTITY:
                 return $this->unprocessableEntity($append);
                 break;
+            case JsonResponse::HTTP_BAD_REQUEST:
+                return $this->badRequest($append);
+                break;
             case JsonResponse::HTTP_UNAUTHORIZED:
                 return $this->unauthorized($append);
                 break;
@@ -35,7 +38,7 @@ class JsonResponseFactory implements JsonResponseInterface
 
     public function badRequest(array $append = []): JsonResponse
     {
-        return $this->instance('Bad Request.', $append, JsonResponse::HTTP_FORBIDDEN);
+        return $this->instance('Bad Request.', $append, JsonResponse::HTTP_BAD_REQUEST);
     }
 
     public function unauthorized(array $append = []): JsonResponse
